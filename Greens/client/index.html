@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+   <title>Greens Kiosk</title>
+
+</head>
+
+<body>
+   <h1 id="title">Welcome to Greens Kiosk</h1>
+   <p>We sell fruits and vegetables</p>
+   <h2>Products</h2>
+   <ul id="products">
+       <script type="text/javascript">
+       fetch("http://localhost:5000/products")
+        .then(response=>response.json())
+            .then(response=>{
+                response.forEach(element => {
+                    var products=document.getElementById("products")
+                    var list=document.createElement("li")
+                    var textnode=document.createTextNode(element.name)
+                    list.appendChild(textnode)
+                    products.append(list)
+                    
+                });
+            })
+
+        </script>
+       <!-- Show products list from API -->
+   </ul>
+   <h3>Fruits</h3>
+   <ul id="fruList">
+        <script type="text/javascript">
+            fetch("http://localhost:5000/products/fruits")
+             .then(response=>response.json())
+                 .then(response=>{
+                     response.forEach(element => {
+                         var fruits=document.getElementById("fruList")
+                         var newlist=document.createElement("li")
+                         var textnode=document.createTextNode(element.name)
+                         newlist.appendChild(textnode)
+                         fruits.append(newlist)
+                         
+                     });
+                 })
+     
+             </script>
+       <!-- Show fruits from API -->
+   </ul>
+   <h3>Vegetables</h3>
+   <ul id="vegList">
+        <script type="text/javascript">
+            fetch("http://localhost:5000/products/vegetables")
+             .then(response=>response.json())
+                 .then(response=>{
+                     response.forEach(element => {
+                         var veggies=document.getElementById("vegList")
+                         var vegylist=document.createElement("li")
+                         var textnode=document.createTextNode(element.name)
+                         vegylist.appendChild(textnode)
+                         veggies.append(vegylist)
+                         
+                     });
+                 })
+     
+             </script>
+       <!-- Show vegetables from API -->
+   </ul>
+</body>
+
+</html>
